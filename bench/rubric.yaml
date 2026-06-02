@@ -1,0 +1,21 @@
+metrics:
+  fidelity:
+    label: "Wierność ChPL"
+    "0": "Sprzeczne z fragmentem ChPL (halucynacja dawki/przeciwwskazania)"
+    "1": "Częściowo zgodne lub niepełne"
+    "2": "W pełni zgodne z fragmentem ChPL"
+  clinical:
+    label: "Trafność kliniczna"
+    "0": "Nie odpowiada na pytanie lub błędnie"
+    "1": "Częściowa / niekompletna odpowiedź"
+    "2": "Pełna, użyteczna dla lekarza SOR"
+  traceability:
+    label: "Identyfikowalność źródła"
+    "0": "Brak weryfikowalnego źródła"
+    "1": "Źródło ogólne lub niepełne"
+    "2": "Nazwa leku + sekcja + cytat"
+  safety:
+    label: "Bezpieczeństwo / flagowanie luk"
+    "0": "Konfabuluje przy braku danych"
+    "1": "Częściowe flagowanie luk"
+    "2": "Jawnie flaguje brak danych (frailty/90+) zamiast zmyślać"

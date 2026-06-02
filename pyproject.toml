@@ -1,0 +1,19 @@
+[project]
+name = "chpl-ai-bench"
+version = "0.1.0"
+description = "ChPL.AI vs ChatGPT — 3-arm reproducibility benchmark (Phase A)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "openai>=2.0",
+    "pyyaml>=6",
+    "pydantic>=2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["bench"]

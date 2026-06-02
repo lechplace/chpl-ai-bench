@@ -1,0 +1,457 @@
+tests:
+- id: sor_001
+  category: dosing_renal
+  severity: critical
+  chpl_required: true
+  question: Pacjent 82 lat, eGFR 24, AF nieklapowe, chce kontynuacji apixabanu - jaka
+    dawka i czy w ogóle bezpieczna?
+  context: Pacjent przyjęty z innego powodu, ale trzeba zweryfikować jego przewlekłe
+    leki; pytanie o redukcję dawki apixabanu wg kryteriów wieku/wagi/kreatyniny i
+    czy nie jest już poniżej dolnej granicy CrCl.
+  must_include:
+  - 2,5 mg
+  - 2x dziennie
+  - kreatynina
+  - wiek
+  - masa
+  - apixaban
+  must_not_include:
+  - 5 mg 2x
+  - przeciwwskazany przy CrCl <25
+  - odstawić apixaban
+  - warfaryna zamiast
+  notes: 'Kluczowe: redukcja do 2,5 mg 2x/dobę wg kryteriów 2 z 3 (wiek >=80, masa
+    <=60 kg, kreatynina >=1,5 mg/dl); CrCl 24 jest na granicy ale nie przeciwwskazaniem
+    bezwzględnym (>15 ml/min OK).'
+- id: sor_002
+  category: empirical_antibiotics
+  severity: critical
+  chpl_required: false
+  question: Senior 74 lata z DPS, podejrzenie HAP, alergia na penicyliny typu wysypka
+    - czym zacząć empirycznie?
+  context: Szpitalne zapalenie płuc u pacjenta z domu opieki = ryzyko MDR, alergia
+    non-severe na PCN więc cefalosporyny wciąż w grze, ale jakie pokrycie Pseudomonas/MRSA.
+  must_include:
+  - ceftriakson
+  - Pseudomonas
+  - piperacylina
+  - wankomycyna
+  - MRSA
+  - HCAP
+  must_not_include:
+  - amoksycylina z kwasem klawulanowym
+  - sama azytromycyna
+  - tylko ceftriakson 1g
+  - penicylina G
+  notes: 'Kluczowe: pokrycie Pseudomonas (piperacylina/tazobaktam lub cefepim) + MRSA
+    (wankomycyna/linezolid); alergia non-severe pozwala na cefalosporyny.'
+- id: sor_003
+  category: anticoagulation_reversal
+  severity: critical
+  chpl_required: true
+  question: Pacjent 69 lat na rivaroxabanie 20mg, krwawienie z górnego odcinka, ostatnia
+    dawka 4h temu, Hb 7.8 - co teraz?
+  context: Aktywne krwawienie GI na DOAC anty-Xa, pytanie o andexanet alfa vs PCC
+    4-czynnikowy, dawka, czy węgiel jeszcze ma sens przy 4h od podania.
+  must_include:
+  - andexanet alfa
+  - PCC
+  - 4-czynnikowy
+  - 50 j.m./kg
+  - transfuzja
+  - węgiel aktywowany
+  must_not_include:
+  - świeżo mrożone osocze jako pierwsza linia
+  - protamina
+  - witamina K
+  - idarucizumab
+  notes: 'Kluczowe: andexanet alfa jako specyficzne antidotum dla anty-Xa; alternatywa
+    PCC 4-czynnikowy 50 j.m./kg; węgiel aktywowany jeśli <2-4h od dawki (tu 4h - graniczne).'
+- id: sor_004
+  category: interactions_drug
+  severity: critical
+  chpl_required: true
+  question: 78-latka na amiodaronie, digoksynie, warfarynie, simwastatynie - dochodzi
+    klarytromycyna na CAP, co odstawić?
+  context: Klasyczna polipragmazja kardio + makrolid = QT + interakcja CYP3A4 z simwastatyną
+    + wzrost INR, pytanie które leki czasowo wstrzymać i czym ewentualnie zamienić
+    ATB.
+  must_include:
+  - simwastatyna
+  - odstawić
+  - QT
+  - interakcja
+  - CYP3A4
+  - INR
+  must_not_include:
+  - bezpieczna kombinacja
+  - kontynuować simwastatynę
+  - azytromycyna jest taka sama
+  - brak interakcji
+  notes: 'Kluczowe: odstawić simwastatynę (ryzyko rabdomiolizy przez CYP3A4); monitorowanie
+    QT (amiodaron + klarytromycyna); kontrola INR (warfaryna); ewentualnie zmiana
+    na doksycyklinę/lewofloksacynę bez interakcji CYP3A4.'
+- id: sor_005
+  category: acls_resuscitation
+  severity: critical
+  chpl_required: false
+  question: Anafilaksja po kontraście jodowym u 55-latki, RR 70/40, świst krtaniowy
+    - dawka adrenaliny IM i kiedy IV?
+  context: Standard ALS w anafilaksji, ale pytanie o przejście na adrenalinę we wlewie
+    ciągłym przy braku odpowiedzi na 2 dawki IM i kryteria intubacji.
+  must_include:
+  - 0,5 mg
+  - IM
+  - adrenalina
+  - udo
+  - wlew
+  - co 5 min
+  must_not_include:
+  - 1 mg IV bolus
+  - 0,1 mg IM
+  - podskórnie
+  - adrenalina 1:1000 IV bolus
+  notes: 'Kluczowe: 0,5 mg adrenaliny IM (1:1000) w przednio-boczną część uda, powtarzać
+    co 5 min; wlew IV (0,05-0,5 mcg/kg/min) dopiero po 2 nieskutecznych dawkach IM;
+    płynoterapia + tlen + leżenie.'
+- id: sor_006
+  category: dosing_renal
+  severity: critical
+  chpl_required: true
+  question: Pacjent 71 lat, eGFR 18, urosepsa, kultury jeszcze nie ma - dawka piperacylina/tazobaktam?
+  context: Ciężka infekcja wymaga loading dose mimo NN, ale dalsze dawki redukowane;
+    pytanie o schemat extended infusion przy AKI/CKD.
+  must_include:
+  - 4,5 g
+  - loading
+  - piperacylina
+  - tazobaktam
+  - przedłużony wlew
+  - co 12 h
+  must_not_include:
+  - 4,5 g co 6 h bez redukcji
+  - bez loading dose
+  - 2,25 g co 8 h jako start
+  - odstawić przy NN
+  notes: 'Kluczowe: pełna dawka loading 4,5 g, dawka podtrzymująca redukowana przy
+    CrCl <20 do 4,5 g co 12 h (lub 2,25 g co 6 h); przedłużony wlew 3-4h poprawia
+    PK/PD.'
+- id: sor_007
+  category: interactions_drug
+  severity: important
+  chpl_required: true
+  question: Mężczyzna 66 lat na klopidogrelu po PCI, dochodzi omeprazol na krwawienie
+    z wrzodu - czy zmienić IPP?
+  context: Znana interakcja omeprazol/esomeprazol vs klopidogrel przez CYP2C19, pytanie
+    o pantoprazol jako alternatywa i czy w ogóle istotne klinicznie.
+  must_include:
+  - pantoprazol
+  - interakcja
+  - CYP2C19
+  - klopidogrel
+  - zmienić IPP
+  - omeprazol
+  must_not_include:
+  - kontynuować omeprazol bezpiecznie
+  - ranitydyna
+  - brak interakcji
+  - zwiększyć dawkę klopidogrelu
+  notes: 'Kluczowe: zmiana na pantoprazol lub rabeprazol (mniejszy wpływ na CYP2C19);
+    omeprazol/esomeprazol obniża skuteczność klopidogrelu.'
+- id: sor_008
+  category: empirical_antibiotics
+  severity: critical
+  chpl_required: false
+  question: Septyczna 81-latka z cewnikiem moczowym 3 tygodnie, wcześniej ESBL w posiewie
+    - empirycznie meropenem czy od razu kolistyna?
+  context: Urosepsa u pacjentki z czynnikami ryzyka CRE, pytanie o eskalację na karbapenem
+    vs konieczność szerszego pokrycia; lokalna oporność szpitala.
+  must_include:
+  - meropenem
+  - ESBL
+  - karbapenem
+  - posiew
+  - kolistyna
+  - CRE
+  must_not_include:
+  - ceftriakson empirycznie
+  - ciprofloksacyna sama
+  - amoksycylina/klawulanian
+  - kolistyna w monoterapii bez wskazań
+  notes: 'Kluczowe: meropenem jako empiria przy znanym ESBL; kolistyna dopiero przy
+    potwierdzeniu CRE/wzroście oporności; pobrać posiewy przed eskalacją.'
+- id: sor_009
+  category: dosing_renal
+  severity: critical
+  chpl_required: true
+  question: Pacjent 75 lat, eGFR 28, świeży DVT - dawka enoksaparyny terapeutyczna
+    i czy w ogóle LMWH przy takim klirensie?
+  context: Pytanie o redukcję enoksaparyny do 1mg/kg/24h vs przejście na UFH przy
+    CrCl <30, oraz monitoring anty-Xa.
+  must_include:
+  - 1 mg/kg
+  - co 24 h
+  - enoksaparyna
+  - monitorowanie anty-Xa
+  - CrCl
+  must_not_include:
+  - 1 mg/kg co 12 h
+  - 1,5 mg/kg
+  - 40 mg profilaktycznie
+  - przeciwwskazana całkowicie
+  notes: 'Kluczowe: przy CrCl 15-30 redukcja dawki terapeutycznej enoksaparyny do
+    1 mg/kg co 24 h (zamiast 1 mg/kg co 12 h); alternatywa UFH z aPTT przy CrCl <30.'
+- id: sor_010
+  category: anticoagulation_reversal
+  severity: important
+  chpl_required: true
+  question: 85-latka na warfarynie, INR 7.2, krwawienie z nosa nieustępujące po tamponadzie
+    - witamina K i co jeszcze?
+  context: Niezagrażające życiu krwawienie przy istotnie podwyższonym INR; pytanie
+    o dawkę witaminy K (PO vs IV), czy PCC potrzebne i czy odstawić warfarynę całkowicie.
+  must_include:
+  - witamina K
+  - 1-3 mg
+  - doustnie
+  - wstrzymać warfarynę
+  - kontrola INR
+  - tamponada
+  must_not_include:
+  - 10 mg witaminy K IV
+  - PCC
+  - świeżo mrożone osocze
+  - koncentrat czynników
+  notes: 'Kluczowe: INR 4,5-10 z niezagrażającym krwawieniem - wstrzymać warfarynę
+    + witamina K 1-3 mg PO (nie IV, nie 10 mg); miejscowa tamponada nosa; PCC nie
+    jest wskazane.'
+- id: sor_011
+  category: interactions_drug
+  severity: important
+  chpl_required: true
+  question: 73-latka na metforminie, sitagliptynie, perindoprilu, indapamidzie - wymiotuje
+    2 dni, eGFR spadł z 55 na 32. Co odstawić natychmiast?
+  context: Typowy SADMANS - klasyczna sytuacja AKI na tle odwodnienia i polipragmazji;
+    pytanie które leki sick day rules nakazują wstrzymać.
+  must_include:
+  - metformina
+  - perindopril
+  - indapamid
+  - odstawić
+  - odwodnienie
+  - SADMANS
+  must_not_include:
+  - kontynuować metforminę
+  - zwiększyć dawkę ACE-I
+  - sitagliptyna powoduje AKI
+  - brak interwencji
+  notes: 'Kluczowe: czasowe odstawienie metforminy (ryzyko kwasicy mleczanowej przy
+    AKI), ACE-I (perindopril) i diuretyku (indapamid); sitagliptyna do redukcji dawki;
+    nawodnienie.'
+- id: sor_012
+  category: acls_resuscitation
+  severity: critical
+  chpl_required: true
+  question: Hipoglikemia 28 mg/dl u 79-latki na glimepirydzie, zjadła glukozę, po
+    godzinie znów 45 - jak długo trzymać i czym?
+  context: Przedłużona hipoglikemia po sulfonylureach wymaga obserwacji 24h i wlewu
+    glukozy; pytanie o octreotid w opornych przypadkach.
+  must_include:
+  - 24 h
+  - obserwacja
+  - glukoza
+  - wlew
+  - sulfonylureą
+  - oktreotyd
+  must_not_include:
+  - wypisać po normalizacji
+  - obserwacja 4 h wystarczy
+  - glukagon jako leczenie ciągłe
+  - odstawić tylko glimepiryd
+  notes: 'Kluczowe: hipoglikemia po sulfonylureach wymaga minimum 24-72h obserwacji
+    + wlew glukozy 10%; oktreotyd 50-100 mcg s.c. przy nawrotach; odstawić glimepiryd.'
+- id: sor_013
+  category: empirical_antibiotics
+  severity: important
+  chpl_required: true
+  question: 62-latka, CAP, CRB-65 = 2, alergia anafilaktyczna na amoksycylinę - lewofloksacyna
+    sama wystarczy?
+  context: Umiarkowanie ciężkie CAP wymagające hospitalizacji, ciężka alergia na beta-laktamy
+    wyklucza cefalosporyny; pytanie o monoterapię fluorochinolonem vs dodanie makrolidu.
+  must_include:
+  - lewofloksacyna
+  - 500 mg
+  - monoterapia
+  - atypowe
+  - CRB-65
+  - hospitalizacja
+  must_not_include:
+  - ceftriakson
+  - amoksycylina z klawulanianem
+  - ciprofloksacyna
+  - tylko makrolid
+  notes: 'Kluczowe: lewofloksacyna 500-750 mg/dobę w monoterapii jest akceptowalna
+    przy ciężkiej alergii na beta-laktamy; pokrywa pneumokoki i atypowe; hospitalizacja
+    CRB-65=2.'
+- id: sor_014
+  category: dosing_renal
+  severity: critical
+  chpl_required: true
+  question: Mężczyzna 80 lat, eGFR 19, AF z RVR 145/min, hemodynamicznie stabilny
+    - bolus digoksyny i dawka podtrzymująca?
+  context: Kontrola częstości u pacjenta z ciężką NN, gdzie digoksyna wymaga znacznej
+    redukcji; pytanie o wielkość loading dose i poziomy docelowe.
+  must_include:
+  - redukcja dawki
+  - digoksyna
+  - poziom
+  - 0,125 mg
+  - powolne
+  - beta-bloker
+  must_not_include:
+  - 0,5 mg bolus IV
+  - 0,25 mg/dobę bez redukcji
+  - dawka standardowa
+  - amiodaron jest bezpieczniejszy bez modyfikacji
+  notes: 'Kluczowe: drastyczna redukcja dawki digoksyny przy CrCl <30 - bolus 0,125-0,25
+    mg powolny, podtrzymująca 0,0625-0,125 mg co 24-48h; monitorowanie stężenia (cel
+    <1,2 ng/ml); rozważyć beta-bloker.'
+- id: sor_015
+  category: interactions_drug
+  severity: important
+  chpl_required: true
+  question: Pacjent 68 lat na sertralinie, tramadolu i ondansetronie po wymiotach
+    - jak duże ryzyko zespołu serotoninowego, co odstawić?
+  context: Trzy leki serotoninergiczne jednoczesnie u zmęczonego pacjenta, pytanie
+    o stratyfikację ryzyka i które są dispensable na SOR.
+  must_include:
+  - zespół serotoninowy
+  - ondansetron
+  - tramadol
+  - sertralina
+  - odstawić
+  - Hunter
+  must_not_include:
+  - brak ryzyka
+  - kontynuować wszystkie leki
+  - tramadol jest bezpieczny z SSRI
+  - ondansetron nie jest serotoninergiczny
+  notes: 'Kluczowe: realne ryzyko zespołu serotoninowego (3 leki serotoninergiczne);
+    ocena kryteriów Huntera; odstawić tramadol (zamiana na inny opioid) i ondansetron
+    (zamiana na metoklopramid/dexamethason); cyproheptadyna w ciężkich przypadkach.'
+- id: sor_016
+  category: anticoagulation_reversal
+  severity: critical
+  chpl_required: true
+  question: 75-latek na dabigatranie 150mg 2x, krwotok pourazowy po upadku z roweru,
+    GCS spada - idarucizumab dawka i jak szybko działa?
+  context: Krwawienie zagrażające życiu na inhibitorze trombiny, pytanie o protokół
+    podania idarucizumabu (Praxbind) i co robić gdy niedostępny.
+  must_include:
+  - idarucizumab
+  - 5 g
+  - IV
+  - dwa bolusy
+  - 2,5 g
+  - Praxbind
+  must_not_include:
+  - andexanet alfa
+  - PCC jako pierwsza linia
+  - protamina
+  - witamina K
+  notes: 'Kluczowe: idarucizumab 5 g IV (2x 2,5 g w bolusach lub krótkim wlewie) jako
+    specyficzne antidotum dla dabigatranu; nie mylić z andexanetem (anty-Xa).'
+- id: sor_017
+  category: dosing_renal
+  severity: critical
+  chpl_required: true
+  question: Pacjentka 84 lata, eGFR 12, infekcja MRSA tkanek miękkich - wankomycyna
+    jakim schematem i czy w ogóle bez HD?
+  context: Bardzo ciężka NN bez dializy, pytanie o loading dose 25mg/kg i dalsze dawkowanie
+    wg poziomów AUC, ewentualnie linezolid jako alternatywa.
+  must_include:
+  - 25 mg/kg
+  - loading
+  - wankomycyna
+  - AUC
+  - stężenie
+  - wydłużone odstępy
+  must_not_include:
+  - 15 mg/kg co 12 h
+  - odstawić wankomycynę
+  - linezolid jest jedynym wyborem
+  - bez loading dose
+  notes: 'Kluczowe: loading 25-30 mg/kg niezależnie od funkcji nerek; dawka podtrzymująca
+    15-20 mg/kg co 24-48h przy CrCl <20; monitorowanie AUC 400-600 lub poziomu trough
+    15-20 mg/L.'
+- id: sor_018
+  category: interactions_drug
+  severity: important
+  chpl_required: true
+  question: 70-latka na apixabanie z powodu AF, dochodzi flukonazol 400mg na kandydemię
+    - co z dawką DOAC?
+  context: Silny inhibitor CYP3A4 i P-gp zwiększa ekspozycję apixabanu; pytanie czy
+    redukować dawkę, czy zamienić na LMWH na czas terapii przeciwgrzybiczej.
+  must_include:
+  - flukonazol
+  - CYP3A4
+  - P-gp
+  - apixaban
+  - monitorowanie
+  - krwawienie
+  must_not_include:
+  - brak interakcji
+  - zwiększyć dawkę apixabanu
+  - echinokandyna jest tańsza
+  - kontynuować bez zmian
+  notes: 'Kluczowe: flukonazol 400 mg jest umiarkowanym inhibitorem CYP3A4 - nie wymaga
+    obligatoryjnej zmiany dawki apixabanu wg ChPL (silne inhibitory CYP3A4 i P-gp
+    jak ketokonazol są przeciwwskazane); rozważyć echinokandynę lub zmianę na heparynę;
+    obserwacja pod kątem krwawienia.'
+- id: sor_019
+  category: acls_resuscitation
+  severity: critical
+  chpl_required: false
+  question: Pacjent 58 lat po haloperidolu IV - sztywność, temp 39.5, CK 8000, zaburzenia
+    świadomości. NMS - dantrolen czy bromokryptyna i dawki?
+  context: Pełnoobjawowy złośliwy zespół neuroleptyczny, pytanie o leczenie pierwszego
+    rzutu, drogi podania i wsparcie wentylacyjne/IVF.
+  must_include:
+  - dantrolen
+  - 2,5 mg/kg
+  - bromokryptyna
+  - odstawić haloperidol
+  - chłodzenie
+  - kreatynina kinaza
+  must_not_include:
+  - kontynuować haloperidol
+  - tylko benzodiazepiny
+  - bromokryptyna IV
+  - dantrolen jest przeciwwskazany
+  notes: 'Kluczowe: natychmiastowe odstawienie haloperidolu, dantrolen 1-2,5 mg/kg
+    IV co 6h (max 10 mg/kg/d) + bromokryptyna 2,5 mg PO/przez sondę co 8h; chłodzenie,
+    nawodnienie, monitorowanie CK i mioglobinurii.'
+- id: sor_020
+  category: empirical_antibiotics
+  severity: critical
+  chpl_required: false
+  question: 67-latek po splenektomii, gorączka 39.8, hipotensja, podejrzenie OPSI
+    - ceftriakson 2g wystarczy czy od razu meropenem + wankomycyna?
+  context: Overwhelming post-splenectomy infection u asplenicznego pacjenta wymaga
+    natychmiastowego szerokiego pokrycia; pytanie o pierwszy strzał empirycznie w
+    pierwszej godzinie.
+  must_include:
+  - ceftriakson
+  - 2 g
+  - wankomycyna
+  - pneumokoki
+  - posocznica
+  - empirycznie
+  must_not_include:
+  - tylko amoksycylina
+  - obserwacja bez antybiotyku
+  - azytromycyna w monoterapii
+  - ceftriakson 1 g profilaktycznie
+  notes: 'Kluczowe: ceftriakson 2 g IV natychmiast (pneumokoki, H. influenzae, meningokoki)
+    + wankomycyna przy podejrzeniu opornych pneumokoków; meropenem przy ciężkim wstrząsie
+    lub wcześniejszej antybiotykoterapii; posiewy krwi przed pierwszą dawką ale nie
+    opóźniać.'
