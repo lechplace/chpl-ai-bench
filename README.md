@@ -122,6 +122,12 @@ The judge is open, not a black box:
 - **Code** (`bench/`): MIT — see [`LICENSE`](LICENSE).
 - **Data** (`data/`): CC-BY-4.0 — see [`LICENSE-DATA`](LICENSE-DATA).
 
+## Contact
+
+Questions, validation collaboration, or to flag an error:
+**lech.hubicki@gmail.com**. We are building a network of clinicians (emergency
+physicians and clinical pharmacologists) to help validate Phase B.
+
 ## Citation
 
 ```bibtex
